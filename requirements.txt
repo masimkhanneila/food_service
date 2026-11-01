@@ -1,0 +1,7 @@
+FastAPI
+uvicorn
+pydantic
+PyJWT
+dotenv
+pwdlib[argon2]
+sqlalchemy
