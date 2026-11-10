@@ -12,6 +12,7 @@ users = Table("users", md,
               Column("user_id", Integer, primary_key=True),
               Column("username", String(50), nullable=False, unique=True),
               Column("email", String(50), nullable=False, unique = True),
+              Column("role",String(20),nullable=False,server_default="customer"),
               Column("hashed_password", String(255), nullable=False)
               )
 
@@ -19,10 +20,11 @@ def initialize_db():
     with engine.begin() as conn :
         md.create_all(conn)
 
-def register_user(username : str, email : EmailStr, hashed_password : str):
+def register_user(username : str, email : EmailStr, hashed_password : str,role :str):
     with engine.begin() as conn :
-        result = conn.execute(users.insert().values(username=username, email=email, hashed_password=hashed_password))
-    return {"user_id" : result.inserted_primary_key[0], "username" : username, "email" : email}
+        result = conn.execute(users.insert().values(username=username, email=email, hashed_password=hashed_password, role = role))
+    return {"user_id" : result.inserted_primary_key[0], "username" : username, "email" : email,"role" : role}
+
 def get_user(username : str):
     with engine.begin() as conn :
         result = conn.execute(select(users).where(users.c.username == username))
