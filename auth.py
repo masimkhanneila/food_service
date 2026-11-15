@@ -70,6 +70,7 @@ def register_customer(user : UserRegister):
     except IntegrityError:
         raise HTTPException(status_code=409, detail="User already exists")
     return registered_user
+
 @router.post("/register/admin",response_model=UserResponse,status_code=201)
 def register_admin(user : UserRegister):
     hashed_password = hash_password(user.password)

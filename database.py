@@ -3,9 +3,15 @@ from fastapi import HTTPException
 from pydantic.v1 import EmailStr
 from sqlalchemy import(JSON,Column,Integer,MetaData,String,Table,create_engine,select,ForeignKey,Text,Numeric,func,CheckConstraint,DateTime)
 from decimal import Decimal
+import os
 
-db_path = Path(__file__).parent / 'food_service.db'
-engine = create_engine(f'sqlite:///{db_path}')
+db_path = Path(
+    os.getenv(
+        "DATABASE_PATH",
+        str(Path(__file__).parent / "food_service.db")
+    )
+)
+engine = create_engine(f"sqlite:///{db_path}")
 md = MetaData()
 
 users = Table("users", md,
