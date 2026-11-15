@@ -3,3 +3,5 @@
 __pycache__/
 food_service.db
 .idea/
+*.db
+*.pyc

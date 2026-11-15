@@ -2,6 +2,7 @@ FastAPI
 uvicorn
 pydantic
 PyJWT
-dotenv
+python-dotenv
 pwdlib[argon2]
 sqlalchemy
+email-validator
