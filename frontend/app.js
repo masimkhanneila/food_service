@@ -66,9 +66,9 @@ const MENU_ITEM_PHOTOS = {
   // Pizza Planet
   "pizza planet|margherita": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=82",
   "pizza planet|pepperoni": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=82",
-  "pizza planet|four cheese": "https://images.unsplash.com/photo-1548365328-9f547fb0953a?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|four cheese": "https://youplateit.com.au/cookbook/four-cheese-pizza-with-a-side-salad-roast-garlic-vinaigrette/?srsltid=AYCX9vLm_qGKi_I00PU3tUzFWx9GsIexJz07RBGEGGypsfMvaxwaHK-c",
   "pizza planet|bbq chicken": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=82",
-  "pizza planet|garlic bread": "https://images.unsplash.com/photo-1619535860434-cf9b3b6d4f31?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|garlic bread": "https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-garlic-bread.jpg",
   "pizza planet|truffle mushroom pizza": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=82",
 
   // Burger Club
@@ -669,9 +669,13 @@ async function filterRestaurants(raw) {
 function dishCard(item, restaurantName) {
   return `
     <article class="dish-card">
-      <img class="dish-image" loading="lazy"
-           src="${getMenuItemPhoto(item, restaurantName)}"
-           alt="${esc(item.name)}"/>
+      <img
+        class="dish-image"
+        loading="lazy"
+        src="${getMenuItemPhoto(item, restaurantName)}"
+        alt="${esc(item.name)}"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=85';"
+      />
 
       <div class="dish-details">
         <h3>${esc(item.name)}</h3>
