@@ -66,9 +66,9 @@ const MENU_ITEM_PHOTOS = {
   // Pizza Planet
   "pizza planet|margherita": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=82",
   "pizza planet|pepperoni": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=82",
-  "pizza planet|four cheese": "https://youplateit.com.au/cookbook/four-cheese-pizza-with-a-side-salad-roast-garlic-vinaigrette/?srsltid=AYCX9vLm_qGKi_I00PU3tUzFWx9GsIexJz07RBGEGGypsfMvaxwaHK-c",
   "pizza planet|bbq chicken": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=82",
-  "pizza planet|garlic bread": "https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-garlic-bread.jpg",
+  "pizza planet|four cheese": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=85",
+  "pizza planet|garlic bread": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=85",
   "pizza planet|truffle mushroom pizza": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=82",
 
   // Burger Club
