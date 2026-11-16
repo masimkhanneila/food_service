@@ -32,45 +32,47 @@ const RESTAURANT_PHOTOS = {
 // Restaurant-specific item photos: never key solely by dish name.
 
 const MENU_ITEM_PHOTOS = {
+
   // Pizza Planet
-  "pizza planet|margherita": "https://source.unsplash.com/600x400/?margherita,pizza",
-  "pizza planet|pepperoni": "https://source.unsplash.com/600x400/?pepperoni,pizza",
-  "pizza planet|four cheese": "https://source.unsplash.com/600x400/?four-cheese,pizza",
-  "pizza planet|bbq chicken": "https://source.unsplash.com/600x400/?bbq,chicken,pizza",
-  "pizza planet|garlic bread": "https://source.unsplash.com/600x400/?garlic,bread",
-  "pizza planet|truffle mushroom pizza": "https://source.unsplash.com/600x400/?mushroom,pizza",
+  "pizza planet|margherita": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=85",
+  "pizza planet|pepperoni": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&q=85",
+  "pizza planet|four cheese": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=85",
+  "pizza planet|bbq chicken": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=800&q=85",
+  "pizza planet|garlic bread": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=85",
+  "pizza planet|truffle mushroom pizza": "https://images.unsplash.com/photo-1548365328-9f547fb0953a?w=800&q=85",
 
   // Burger Club
-  "burger club|classic burger": "https://source.unsplash.com/600x400/?classic,burger",
-  "burger club|double cheeseburger": "https://source.unsplash.com/600x400/?double,cheeseburger",
-  "burger club|chicken burger": "https://source.unsplash.com/600x400/?crispy,chicken,burger",
-  "burger club|french fries": "https://source.unsplash.com/600x400/?french,fries",
-  "burger club|chicken nuggets": "https://source.unsplash.com/600x400/?chicken,nuggets",
-  "burger club|bbq smash burger": "https://source.unsplash.com/600x400/?bbq,smash,burger",
+  "burger club|classic burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=85",
+  "burger club|double cheeseburger": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&q=85",
+  "burger club|chicken burger": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&q=85",
+  "burger club|french fries": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=800&q=85",
+  "burger club|chicken nuggets": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=800&q=85",
+  "burger club|bbq smash burger": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=85",
 
   // Pasta Lab
-  "pasta lab|carbonara": "https://source.unsplash.com/600x400/?carbonara,pasta",
-  "pasta lab|chicken alfredo": "https://source.unsplash.com/600x400/?alfredo,pasta",
-  "pasta lab|bolognese": "https://source.unsplash.com/600x400/?bolognese,pasta",
-  "pasta lab|pesto pasta": "https://source.unsplash.com/600x400/?pesto,pasta",
-  "pasta lab|tiramisu": "https://source.unsplash.com/600x400/?tiramisu,dessert",
-  "pasta lab|lasagna": "https://source.unsplash.com/600x400/?lasagna",
+  "pasta lab|carbonara": "https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=800&q=85",
+  "pasta lab|chicken alfredo": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=800&q=85",
+  "pasta lab|bolognese": "https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=800&q=85",
+  "pasta lab|pesto pasta": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=800&q=85",
+  "pasta lab|tiramisu": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=85",
+  "pasta lab|lasagna": "https://images.unsplash.com/photo-1619895092538-128341789043?w=800&q=85",
 
   // Seoul Bites
-  "seoul bites|korean fried chicken": "https://source.unsplash.com/600x400/?korean,fried,chicken",
-  "seoul bites|tteokbokki": "https://source.unsplash.com/600x400/?tteokbokki",
-  "seoul bites|bibimbap": "https://source.unsplash.com/600x400/?bibimbap",
-  "seoul bites|kimbap": "https://source.unsplash.com/600x400/?kimbap",
-  "seoul bites|kimchi fries": "https://source.unsplash.com/600x400/?loaded,fries",
-  "seoul bites|korean corn dog": "https://source.unsplash.com/600x400/?korean,corn,dog",
+  "seoul bites|korean fried chicken": "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=800&q=85",
+  "seoul bites|tteokbokki": "https://images.unsplash.com/photo-1641574895763-d09f6a0ec97a?w=800&q=85",
+  "seoul bites|bibimbap": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&q=85",
+  "seoul bites|kimbap": "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&q=85",
+  "seoul bites|kimchi fries": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=800&q=85",
+  "seoul bites|korean corn dog": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=800&q=85",
 
   // Butter Bloom Bakery
-  "butter bloom bakery|almond croissant": "https://source.unsplash.com/600x400/?almond,croissant",
-  "butter bloom bakery|cinnamon roll": "https://source.unsplash.com/600x400/?cinnamon,roll",
-  "butter bloom bakery|pain au chocolat": "https://source.unsplash.com/600x400/?pain,au,chocolat",
-  "butter bloom bakery|san sebastian cheesecake": "https://source.unsplash.com/600x400/?basque,cheesecake",
-  "butter bloom bakery|chocolate eclair": "https://source.unsplash.com/600x400/?chocolate,eclair",
-  "butter bloom bakery|blueberry muffin": "https://source.unsplash.com/600x400/?blueberry,muffin",
+  "butter bloom bakery|almond croissant": "https://images.unsplash.com/photo-1555507036-ab794f4afe5b?w=800&q=85",
+  "butter bloom bakery|cinnamon roll": "https://images.unsplash.com/photo-1603532648955-039310d9ed75?w=800&q=85",
+  "butter bloom bakery|pain au chocolat": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=85",
+  "butter bloom bakery|san sebastian cheesecake": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800&q=85",
+  "butter bloom bakery|chocolate eclair": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=85",
+  "butter bloom bakery|blueberry muffin": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=800&q=85",
+
   // Green Bowl
   "green bowl|chicken bowl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=82",
   "green bowl|avocado salad": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=82",
