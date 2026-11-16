@@ -1,4 +1,3 @@
-
 /* Foodie frontend — FastAPI connection */
 const API_BASE = "";
 
@@ -29,6 +28,95 @@ const RESTAURANT_PHOTOS = {
   "green bowl": PHOTOS.salad,
   "seoul bites": PHOTOS.korean,
 };
+
+// Restaurant-specific item photos: never key solely by dish name.
+const MENU_ITEM_PHOTOS = {
+  // Matcha Mood
+  "matcha mood|strawberry matcha": "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=800&q=82",
+  "matcha mood|iced matcha latte": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=800&q=82",
+  "matcha mood|spanish latte": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=82",
+  "matcha mood|vanilla cold brew": "https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=800&q=82",
+  "matcha mood|avocado toast": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=82",
+  "matcha mood|matcha cheesecake": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=82",
+
+  // Butter Bloom Bakery
+  "butter bloom bakery|almond croissant": "https://images.unsplash.com/photo-1555507036-ab794f4afe5b?auto=format&fit=crop&w=800&q=82",
+  "butter bloom bakery|cinnamon roll": "https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=800&q=82",
+  "butter bloom bakery|pain au chocolat": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=82",
+  "butter bloom bakery|san sebastian cheesecake": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=82",
+  "butter bloom bakery|chocolate eclair": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=82",
+  "butter bloom bakery|blueberry muffin": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=800&q=82",
+
+  // Steak & Flame
+  "steak & flame|ribeye steak": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=82",
+  "steak & flame|filet mignon": "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=82",
+  "steak & flame|grilled salmon": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=82",
+  "steak & flame|truffle pasta": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=82",
+  "steak & flame|mushroom fettuccine": "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=800&q=82",
+  "steak & flame|caesar salad": "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=800&q=82",
+
+  // Crispy Chicken Co.
+  "crispy chicken co.|classic chicken sandwich": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=82",
+  "crispy chicken co.|spicy chicken burger": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=82",
+  "crispy chicken co.|chicken tenders": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=800&q=82",
+  "crispy chicken co.|cajun fries": "https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=800&q=82",
+  "crispy chicken co.|chicken wrap": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=800&q=82",
+  "crispy chicken co.|butter biscuit": "https://images.unsplash.com/photo-1598373182133-52452f7691ef?auto=format&fit=crop&w=800&q=82",
+
+  // Pizza Planet
+  "pizza planet|margherita": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|pepperoni": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|four cheese": "https://images.unsplash.com/photo-1548365328-9f547fb0953a?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|bbq chicken": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|garlic bread": "https://images.unsplash.com/photo-1619535860434-cf9b3b6d4f31?auto=format&fit=crop&w=800&q=82",
+  "pizza planet|truffle mushroom pizza": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=82",
+
+  // Burger Club
+  "burger club|classic burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=82",
+  "burger club|double cheeseburger": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=82",
+  "burger club|chicken burger": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=82",
+  "burger club|french fries": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=800&q=82",
+  "burger club|chicken nuggets": "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=800&q=82",
+  "burger club|bbq smash burger": "https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=82",
+
+  // Sushi House
+  "sushi house|philadelphia roll": "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=82",
+  "sushi house|california roll": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=82",
+  "sushi house|dragon roll": "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=800&q=82",
+  "sushi house|salmon nigiri": "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=82",
+  "sushi house|miso soup": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=82",
+  "sushi house|shrimp tempura roll": "https://images.unsplash.com/photo-1607301405390-d831c242f59b?auto=format&fit=crop&w=800&q=82",
+
+  // Pasta Lab
+  "pasta lab|carbonara": "https://images.unsplash.com/photo-1600803907087-f56d462fd26b?auto=format&fit=crop&w=800&q=82",
+  "pasta lab|chicken alfredo": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=800&q=82",
+  "pasta lab|bolognese": "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=800&q=82",
+  "pasta lab|pesto pasta": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?auto=format&fit=crop&w=800&q=82",
+  "pasta lab|tiramisu": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=800&q=82",
+  "pasta lab|lasagna": "https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=800&q=82",
+
+  // Green Bowl
+  "green bowl|chicken bowl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=82",
+  "green bowl|avocado salad": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=82",
+  "green bowl|caesar salad": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=82",
+  "green bowl|smoothie bowl": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=82",
+  "green bowl|fresh orange juice": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=82",
+  "green bowl|salmon poke bowl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=82",
+
+  // Seoul Bites
+  "seoul bites|korean fried chicken": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=82",
+  "seoul bites|tteokbokki": "https://images.unsplash.com/photo-1641574895763-d09f6a0ec97a?auto=format&fit=crop&w=800&q=82",
+  "seoul bites|bibimbap": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=800&q=82",
+  "seoul bites|kimbap": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=82",
+  "seoul bites|kimchi fries": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=82",
+  "seoul bites|korean corn dog": "https://images.unsplash.com/photo-1612392166886-ee8475b03af2?auto=format&fit=crop&w=800&q=82",
+
+};
+
+function getMenuItemPhoto(item, restaurantName = "") {
+  const key = `${String(restaurantName).trim().toLowerCase()}|${String(item?.name || "").trim().toLowerCase()}`;
+  return MENU_ITEM_PHOTOS[key] || photoFor(`${item?.name || ""} ${item?.category || ""}`);
+}
 
 const CATEGORIES = [
   { name: "Burgers", emoji: "🍔", bg: "#fff0c4", query: "burger" },
@@ -121,6 +209,7 @@ let restaurantRatings = {};
 let menuCache = {};
 let currentMenuFilter = "All";
 let currentRestaurantTab = "menu";
+let currentRestaurantName = "";
 let toastTimer;
 
 function toast(message) {
@@ -577,11 +666,11 @@ async function filterRestaurants(raw) {
 
 /* RESTAURANT DETAILS */
 
-function dishCard(item) {
+function dishCard(item, restaurantName) {
   return `
     <article class="dish-card">
       <img class="dish-image" loading="lazy"
-           src="${photoFor(item.name + " " + item.category)}"
+           src="${getMenuItemPhoto(item, restaurantName)}"
            alt="${esc(item.name)}"/>
 
       <div class="dish-details">
@@ -613,6 +702,8 @@ async function restaurantPage(id) {
       api(`/restaurants/${id}/reviews`),
       getRating(id)
     ]);
+
+    currentRestaurantName = restaurant.name;
 
     const tabs = `
       <div class="tabs">
@@ -651,7 +742,7 @@ async function restaurantPage(id) {
                 currentMenuFilter === "All" ||
                 item.category === currentMenuFilter
               )
-              .map(dishCard)
+              .map(item => dishCard(item, restaurant.name))
               .join("") ||
             empty("🍽️", "No dishes yet", "The restaurant is preparing its menu.")
           }
@@ -796,6 +887,8 @@ function addToBasket(id) {
       name: item.name,
       price: Number(item.price),
       category: item.category,
+      restaurant_name: restaurants.find(r => r.restaurant_id === restaurantId)?.name || currentRestaurantName,
+      photo: getMenuItemPhoto(item, restaurants.find(r => r.restaurant_id === restaurantId)?.name || currentRestaurantName),
       quantity: 1
     });
   }
@@ -837,7 +930,7 @@ function basketPage() {
           ${basket.items.map(item => `
             <div class="basket-item">
               <img class="basket-thumb"
-                   src="${photoFor(item.name + " " + item.category)}"
+                   src="${item.photo || getMenuItemPhoto(item, item.restaurant_name || restaurants.find(r => r.restaurant_id === basket.restaurant_id)?.name || "")}"
                    alt="${esc(item.name)}"/>
 
               <div class="basket-info">
