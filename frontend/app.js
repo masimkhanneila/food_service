@@ -3,12 +3,31 @@
 const API_BASE = "";
 
 const PHOTOS = {
-  burger: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1000&q=85",
-  pizza: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1000&q=85",
-  sushi: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1000&q=85",
-  salad: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000&q=85",
-  noodles: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1000&q=85",
-  dessert: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1000&q=85"
+  burger: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=85",
+  pizza: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=85",
+  sushi: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1200&q=85",
+  salad: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=85",
+  noodles: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&q=85",
+  dessert: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1200&q=85",
+  matcha: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=1200&q=85",
+  bakery: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=85",
+  steak: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1200&q=85",
+  chicken: "https://images.unsplash.com/photo-1562967914-608f82629710?w=1200&q=85",
+  pasta: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=1200&q=85",
+  korean: "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=1200&q=85",
+};
+
+const RESTAURANT_PHOTOS = {
+  "matcha mood": PHOTOS.matcha,
+  "butter bloom bakery": PHOTOS.bakery,
+  "steak & flame": PHOTOS.steak,
+  "crispy chicken co.": PHOTOS.chicken,
+  "pizza planet": PHOTOS.pizza,
+  "burger club": PHOTOS.burger,
+  "sushi house": PHOTOS.sushi,
+  "pasta lab": PHOTOS.pasta,
+  "green bowl": PHOTOS.salad,
+  "seoul bites": PHOTOS.korean,
 };
 
 const CATEGORIES = [
@@ -39,13 +58,45 @@ const fmt = value =>
   })} ₸`;
 
 function photoFor(text) {
-  const value = String(text || "").toLowerCase();
+  const value = String(text || "").trim().toLowerCase();
 
-  if (/pizza|пицц/.test(value)) return PHOTOS.pizza;
-  if (/sushi|roll|суш/.test(value)) return PHOTOS.sushi;
-  if (/salad|healthy|салат/.test(value)) return PHOTOS.salad;
-  if (/ramen|noodle|лапша/.test(value)) return PHOTOS.noodles;
-  if (/cake|dessert|sweet|торт/.test(value)) return PHOTOS.dessert;
+  if (RESTAURANT_PHOTOS[value]) return RESTAURANT_PHOTOS[value];
+
+  if (/matcha|latte|cold brew|coffee|espresso/.test(value))
+    return PHOTOS.matcha;
+
+  if (/croissant|muffin|éclair|eclair|cinnamon|pastr|biscuit|bread/.test(value))
+    return PHOTOS.bakery;
+
+  if (/steak|ribeye|mignon|grilled salmon/.test(value))
+    return PHOTOS.steak;
+
+  if (/fried chicken|tenders|nugget|cajun|chicken sandwich/.test(value))
+    return PHOTOS.chicken;
+
+  if (/pizza|margherita|pepperoni/.test(value))
+    return PHOTOS.pizza;
+
+  if (/burger|fries|smash/.test(value))
+    return PHOTOS.burger;
+
+  if (/sushi|nigiri|roll|tempura|miso/.test(value))
+    return PHOTOS.sushi;
+
+  if (/pasta|carbonara|alfredo|bolognese|fettuccine|lasagna|pesto/.test(value))
+    return PHOTOS.pasta;
+
+  if (/salad|bowl|avocado|caesar|juice/.test(value))
+    return PHOTOS.salad;
+
+  if (/tteokbokki|bibimbap|kimbap|kimchi|corn dog|korean/.test(value))
+    return PHOTOS.korean;
+
+  if (/ramen|noodle/.test(value))
+    return PHOTOS.noodles;
+
+  if (/cake|dessert|sweet|tiramisu/.test(value))
+    return PHOTOS.dessert;
 
   return PHOTOS.burger;
 }
