@@ -11,3 +11,4 @@ __pycache__/
 .git/
 .idea/
 .vscode/
+!food_service.db
