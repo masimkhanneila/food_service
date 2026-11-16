@@ -1,15 +1,15 @@
 
-# 🍔 Foodie — Food Ordering Platform
+# Foodie — Food Ordering Platform
 
 Foodie is a full-stack food ordering web application built with FastAPI, SQLite, and JavaScript.
 
 Customers can explore restaurants, browse menus, add dishes to their basket, place orders, and leave reviews. Restaurant owners can manage their restaurants, menus, and incoming orders.
 
-## 🌐 Live Demo
+## Live Demo
 
 https://food-service-8mz7.onrender.com/
 
-## ✨ Features
+##  Features
 
 ### Customers
 - Register and log in
@@ -41,7 +41,7 @@ https://food-service-8mz7.onrender.com/
 
 **Deployment:** Docker, Docker Compose, Render
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 food_service/
@@ -63,7 +63,7 @@ food_service/
 └── design_doc.md
 ```
 
-## 🚀 Run Locally
+##  Run Locally
 
 ### 1. Clone the repository
 
@@ -112,7 +112,7 @@ Swagger API documentation:
 
 http://localhost:8000/docs
 
-## 🐳 Run with Docker Compose
+##  Run with Docker Compose
 
 Create and configure `.env` before starting the containers.
 
@@ -130,7 +130,7 @@ docker compose down
 
 Docker Compose stores SQLite data in a named volume for local use.
 
-## 📡 Main API Endpoints
+##  Main API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -150,7 +150,7 @@ Docker Compose stores SQLite data in a named volume for local use.
 
 Some endpoints require JWT authentication and restaurant-owner permissions.
 
-## 🔐 Security
+##  Security
 
 - Passwords are hashed using Argon2.
 - Authentication uses JWT bearer tokens.
@@ -158,7 +158,7 @@ Some endpoints require JWT authentication and restaurant-owner permissions.
 - Order status updates are restricted to the restaurant owner.
 - Reviews require a completed order.
 
-## 🗄 Database
+##  Database
 
 Foodie uses SQLite with SQLAlchemy Core.
 
@@ -174,7 +174,7 @@ The demonstration dataset contains 10 restaurants and 60 menu items.
 
 The Render Free deployment uses ephemeral storage. New data may be lost after a restart or redeployment, so the hosted version is intended for demonstration rather than production use.
 
-## 🎓 Project Purpose
+##  Project Purpose
 
 This project demonstrates REST API development, database relationships, authentication, authorization, validation, frontend/backend integration, and containerized deployment.
 
