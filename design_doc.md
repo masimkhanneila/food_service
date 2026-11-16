@@ -1,30 +1,37 @@
 # Food Service 
+
 ## Technologies :
 1. fastapi
 2. sqlite & sqlalchemy
 3. jwt
 4. uvicorn
 5. docker
+
 ## Project Goal 
-#### To build a RESTful backend for a food-ordering platform.
-#### Making it easier for customers to discover restaurants, browse menus, and place orders.
+
+1. To build a RESTful backend for a food-ordering platform.
+2. Making it easier for customers to discover restaurants, browse menus, and place orders.
+
 ## Models : 
 ### User | Restaurant | MenuItem
+
 ## Properties of models :
 #### User 
 * username 
-* gmail
+* email
 * password
+--- добавить адрес
 #### Restaurant 
 * name 
 * description
 * address
 * owner
 #### MenuItem
-* dish
+* name
 * price
-* ingridients
+* ingredients
 * category
+
 ## Behavior of models :
 #### User can 
 * register account
@@ -32,10 +39,10 @@
 * make an order 
 * give a rating and feedback
 * view an order history 
-* track order status 
+* track order status -- подумать нужно ли это
 * browse restaurants and menus
-* update profile
-* cancel an order
+* update profile -- а что можно обновить?
+* cancel an order -- убрать
 #### Restaurant can :
 * accept and prepare an order
 * add menu items
@@ -44,7 +51,7 @@
 * update order status
 * remove menu items
 * view all orders
-#### MenuItem
+#### MenuItem -- можно удалить, уже есть в Restaurant can
 * create menuitem
 * change menuitem
 * delete menuitem
@@ -59,6 +66,11 @@
 * GET/all_restaurants
 * PATCH/profile
 * DELETE/order
+
+-- лучше иметь GET /order/{id}
+-- GET /orders
+JSON: { from_date, to_date, restaurant }
+
 #### Restaurant 
 * GET/order
 * GET/review
@@ -68,7 +80,8 @@
 * POST/menuitem
 * PATCH/menuitem
 * DELETE/menuitem
-## DATABASE
+
+## Database
 
 ### Table: users
 
