@@ -306,7 +306,7 @@ async function getRating(id) {
 
 async function loadMenu(id) {
   if (!menuCache[id]) {
-    menuCache[id] = await api(`/restaurants/${id}/menu-items`);
+    menuCache[id] = await api(`/menu/${id}/menu-items`);
   }
 
   return menuCache[id];
@@ -1337,7 +1337,7 @@ async function adminPage() {
           `/restaurants/${restaurant.restaurant_id}/orders`
         ),
         items: await api(
-          `/restaurants/${restaurant.restaurant_id}/menu-items`
+            `/menu/${restaurant.restaurant_id}/menu-items`
         )
       }))
     );
@@ -1669,7 +1669,7 @@ async function submitDish(form) {
   };
 
   try {
-    await api(`/restaurants/${restaurantId}/menu-items`, {
+    await api(`/menu/${restaurantId}/menu-items`, {
       method: "POST",
       body: JSON.stringify(payload)
     });
@@ -1782,7 +1782,7 @@ async function deleteRestaurant(restaurantId) {
 async function editMenuItem(restaurantId, itemId) {
   try {
     const item = await api(
-      `/restaurants/menu-items/${itemId}`
+      `/menu/menu-items/${itemId}`
     );
     if (item.restaurant_id !== restaurantId) {
         return toast("This dish belongs to another restaurant");
@@ -1814,7 +1814,7 @@ async function editMenuItem(restaurantId, itemId) {
     }
 
     await api(
-      `/restaurants/${restaurantId}/menu-items/${itemId}`,
+      `/menu/${restaurantId}/menu-items/${itemId}`,
       {
         method: "PATCH",
         body: JSON.stringify({
@@ -1842,7 +1842,7 @@ async function deleteMenuItem(restaurantId, itemId) {
 
   try {
     await api(
-      `/restaurants/${restaurantId}/menu-items/${itemId}`,
+      `/menu/${restaurantId}/menu-items/${itemId}`,
       {
         method: "DELETE"
       }
@@ -1967,7 +1967,7 @@ document.addEventListener("click", async event => {
       const restaurantId = Number(button.dataset.rid);
 
       await api(
-        `/restaurants/${restaurantId}/menu-items/${button.dataset.item}`,
+        `/menu/${restaurantId}/menu-items/${button.dataset.item}`,
         {
           method: "PATCH",
           body: JSON.stringify({ price })

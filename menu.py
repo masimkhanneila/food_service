@@ -16,7 +16,7 @@ class MenuItemUpdate(BaseModel):
     price : Decimal | None = None
     category : str | None = None
     description : str | None = None
-router = APIRouter(prefix="/restaurants", tags=["menu"])
+router = APIRouter(prefix="/menu", tags=["menu"])
 @router.post("/{restaurant_id}/menu-items", status_code=201)
 def create_menu_items(item: MenuItemCreate ,restaurant_id :int, admin=Depends(require_restaurant_owner)):
     check_admin(restaurant_id,admin)

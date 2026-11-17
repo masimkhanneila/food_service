@@ -110,19 +110,19 @@
 * DELETE /restaurants/{restaurant_id}
 * GET /restaurants/{restaurant_id}/rating
 * GET /restaurants/{restaurant_id}/reviews
+* GET /restaurants/{restaurant_id}/orders
 
 ### MenuItem
-* GET /restaurants/{restaurant_id}/menu-items
-* POST /restaurants/{restaurant_id}/menu-items
-* GET /restaurants/menu-items/{menu_item_id}
-* PATCH /restaurants/{restaurant_id}/menu-items/{menu_item_id}
-* DELETE /restaurants/{restaurant_id}/menu-items/{menu_item_id}
+* GET /menu/{restaurant_id}/menu-items
+* POST /menu/{restaurant_id}/menu-items
+* GET /menu/menu-items/{menu_item_id}
+* PATCH /menu/{restaurant_id}/menu-items/{menu_item_id}
+* DELETE /menu/{restaurant_id}/menu-items/{menu_item_id}
 
 ### Order
 * POST /orders
 * GET /orders/me
 * GET /orders/{order_id}
-* GET /restaurants/{restaurant_id}/orders
 * PATCH /orders/{order_id}/status
 
 ### Review
