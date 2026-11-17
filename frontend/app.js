@@ -1305,6 +1305,7 @@ function nextStatus(status) {
     : null;
 }
 
+
 async function adminPage() {
   if (!me) {
     sessionStorage.setItem("foodie_return", "#admin");
@@ -1368,7 +1369,9 @@ async function adminPage() {
           <span class="muted">Orders in progress</span>
           <strong>
             ${
-              allOrders.filter(order => order.status !== "completed").length
+              allOrders.filter(
+                order => order.status !== "completed"
+              ).length
             }
           </strong>
         </div>
@@ -1376,13 +1379,32 @@ async function adminPage() {
 
       ${datasets.map(data => `
         <section class="admin-section">
+
           <div class="section-head">
             <h2>🏬 ${esc(data.restaurant.name)}</h2>
 
-            <a href="#restaurant/${data.restaurant.restaurant_id}"
-               class="inline-link">
-              View public page →
-            </a>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+
+              <a href="#restaurant/${data.restaurant.restaurant_id}"
+                 class="inline-link">
+                View public page →
+              </a>
+
+              <button type="button"
+                      class="btn btn-outline btn-small"
+                      data-action="edit-restaurant"
+                      data-rid="${data.restaurant.restaurant_id}">
+                Edit restaurant
+              </button>
+
+              <button type="button"
+                      class="btn btn-outline btn-small"
+                      data-action="delete-restaurant"
+                      data-rid="${data.restaurant.restaurant_id}">
+                Delete restaurant
+              </button>
+
+            </div>
           </div>
 
           <div class="panel">
@@ -1439,13 +1461,34 @@ async function adminPage() {
                         </span>
                       </div>
 
-                      <button class="btn btn-outline btn-small"
-                              data-action="edit-price"
-                              data-rid="${data.restaurant.restaurant_id}"
-                              data-item="${item.item_id}"
-                              data-price="${item.price}">
-                        Edit price
-                      </button>
+                      <div style="display:flex;gap:8px;flex-wrap:wrap">
+
+                        <button type="button"
+                                class="btn btn-outline btn-small"
+                                data-action="edit-price"
+                                data-rid="${data.restaurant.restaurant_id}"
+                                data-item="${item.item_id}"
+                                data-price="${item.price}">
+                          Edit price
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-outline btn-small"
+                                data-action="edit-menu-item"
+                                data-rid="${data.restaurant.restaurant_id}"
+                                data-item="${item.item_id}">
+                          Edit dish
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-outline btn-small"
+                                data-action="delete-menu-item"
+                                data-rid="${data.restaurant.restaurant_id}"
+                                data-item="${item.item_id}">
+                          Delete dish
+                        </button>
+
+                      </div>
                     </div>
                   `).join("")
                 : '<p class="muted">No menu items yet.</p>'
@@ -1455,6 +1498,7 @@ async function adminPage() {
 
             ${addDishForm(data.restaurant.restaurant_id)}
           </div>
+
         </section>
       `).join("")}
 
@@ -1467,6 +1511,7 @@ async function adminPage() {
     shell(errorPanel(error.message), "admin");
   }
 }
+
 
 /* PLACE AN ORDER */
 
@@ -1665,6 +1710,153 @@ async function submitRestaurant(form) {
   }
 }
 
+
+/* EDIT RESTAURANT */
+
+async function editRestaurant(restaurantId) {
+  const restaurant = restaurants.find(
+    r => r.restaurant_id === restaurantId
+  );
+
+  if (!restaurant) return toast("Restaurant not found");
+
+  const name = prompt("Restaurant name:", restaurant.name);
+  if (name === null) return;
+
+  const address = prompt("Address:", restaurant.address);
+  if (address === null) return;
+
+  const email = prompt("Email:", restaurant.email);
+  if (email === null) return;
+
+  const description = prompt(
+    "Description:",
+    restaurant.description || ""
+  );
+  if (description === null) return;
+
+  if (!name.trim() || !address.trim() || !email.trim()) {
+    return toast("Name, address and email are required");
+  }
+
+  try {
+    await api(`/restaurants/${restaurantId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name: name.trim(),
+        address: address.trim(),
+        email: email.trim(),
+        description: description.trim() || null
+      })
+    });
+
+    toast("Restaurant updated!");
+    await adminPage();
+  } catch (error) {
+    toast(error.message);
+  }
+}
+
+/* DELETE RESTAURANT */
+
+async function deleteRestaurant(restaurantId) {
+  if (!confirm("Delete this restaurant permanently?")) return;
+
+  try {
+    await api(`/restaurants/${restaurantId}`, {
+      method: "DELETE"
+    });
+
+    delete menuCache[restaurantId];
+    delete restaurantRatings[restaurantId];
+
+    toast("Restaurant deleted!");
+    await adminPage();
+  } catch (error) {
+    toast(error.message);
+  }
+}
+
+/* EDIT MENU ITEM */
+
+async function editMenuItem(restaurantId, itemId) {
+  try {
+    const item = await api(
+      `/restaurants/menu-items/${itemId}`
+    );
+    if (item.restaurant_id !== restaurantId) {
+        return toast("This dish belongs to another restaurant");
+    }
+    const name = prompt("Dish name:", item.name);
+    if (name === null) return;
+
+    const priceInput = prompt("Price:", item.price);
+    if (priceInput === null) return;
+
+    const category = prompt("Category:", item.category);
+    if (category === null) return;
+
+    const description = prompt(
+      "Description:",
+      item.description || ""
+    );
+    if (description === null) return;
+
+    const price = Number(priceInput);
+
+    if (
+      !name.trim() ||
+      !category.trim() ||
+      !Number.isFinite(price) ||
+      price <= 0
+    ) {
+      return toast("Enter valid dish information");
+    }
+
+    await api(
+      `/restaurants/${restaurantId}/menu-items/${itemId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          name: name.trim(),
+          price,
+          category: category.trim(),
+          description: description.trim() || null
+        })
+      }
+    );
+
+    delete menuCache[restaurantId];
+
+    toast("Dish updated!");
+    await adminPage();
+  } catch (error) {
+    toast(error.message);
+  }
+}
+
+/* DELETE MENU ITEM */
+
+async function deleteMenuItem(restaurantId, itemId) {
+  if (!confirm("Delete this dish permanently?")) return;
+
+  try {
+    await api(
+      `/restaurants/${restaurantId}/menu-items/${itemId}`,
+      {
+        method: "DELETE"
+      }
+    );
+
+    delete menuCache[restaurantId];
+
+    toast("Dish deleted!");
+    await adminPage();
+  } catch (error) {
+    toast(error.message);
+  }
+}
+
 /* BUTTON CLICK HANDLERS */
 
 document.addEventListener("click", async event => {
@@ -1672,6 +1864,33 @@ document.addEventListener("click", async event => {
   if (!button) return;
 
   const action = button.dataset.action;
+
+  if (action === "edit-restaurant") {
+    await editRestaurant(Number(button.dataset.rid));
+    return;
+  }
+
+  if (action === "delete-restaurant") {
+    await deleteRestaurant(Number(button.dataset.rid));
+    return;
+  }
+
+  if (action === "edit-menu-item") {
+    await editMenuItem(
+      Number(button.dataset.rid),
+      Number(button.dataset.item)
+    );
+    return;
+  }
+
+  if (action === "delete-menu-item") {
+    await deleteMenuItem(
+      Number(button.dataset.rid),
+      Number(button.dataset.item)
+    );
+    return;
+  }
+
 
   if (action === "logout") {
     sessionStorage.removeItem("foodie_token");
