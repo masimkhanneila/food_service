@@ -295,10 +295,6 @@ async function loadRestaurants(force = false) {
 }
 
 async function getRating(id) {
-  if (id in restaurantRatings) {
-    return restaurantRatings[id];
-  }
-
   try {
     restaurantRatings[id] = await api(`/restaurants/${id}/rating`);
   } catch {
