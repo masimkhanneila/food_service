@@ -2,7 +2,6 @@
 services:
   foodie:
     build: .
-    container_name: foodie-app
     ports:
       - "8000:8000"
     env_file:
